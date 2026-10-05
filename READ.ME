@@ -1,0 +1,37 @@
+# 🩺 Health Insurance Pricing Engine (GLM)
+*Bridging the gap between standard machine learning and actual actuarial pricing.*
+
+**🚀 Live Demo:** [Insert your Streamlit link here]
+
+### 👋 The "Why" Behind This Project
+I built this project because I noticed a lot of data science tutorials focus entirely on minimizing error (like RMSE) using "black box" models. But in the actuarial world, explainability is everything. You need to be able to tell a regulator—or a customer—exactly *why* a policyholder is being charged a specific premium.
+
+This app takes standard machine learning and applies an actuarial lens, turning a predictive model into a transparent, interactive ratebook. 
+
+### 🧮 The Math: Why a Gamma GLM?
+Instead of a standard linear regression, this engine runs on a **Gamma Generalized Linear Model (GLM) with a log-link function** (using Scikit-Learn's `TweedieRegressor`). 
+
+Healthcare costs are strictly positive and heavily right-skewed (most people have low costs, but a few have massive hospital bills), which breaks standard regression assumptions. By using a log-link GLM, I can extract the exponentiated coefficients and turn them into exact **Rating Factors** (multipliers). 
+
+When you adjust the sliders in the app, you aren't just getting a prediction; you are seeing the exact mathematical weight of your Age, BMI, and lifestyle choices applied to a base rate. *(Spoiler alert: try toggling the "Smoker" status and watch the multiplier jump!)*
+
+### 📊 The Data
+The model is trained on the publicly available Kaggle Medical Cost Personal Dataset, which contains 1,338 records of individuals including their age, sex, BMI, number of dependents, smoking status, region, and total medical charges.
+
+### 🛠️ Tech Stack
+* **Python** for the core logic (Pandas, NumPy)
+* **Scikit-Learn** for the modeling pipeline (TweedieRegressor, OneHotEncoder)
+* **Streamlit** for the interactive frontend and web deployment
+
+### ⚙️ How to Run Locally
+Want to spin this up on your own machine? 
+1. Clone this repository.
+2. Install the required packages: `pip install -r requirements.txt`
+3. Launch the server: `streamlit run app.py`
+
+---
+
+### Let's Connect
+**Haris Srinava** 
+* Statistics Undergraduate @ Carleton University
+* [LinkedIn](Insert your LinkedIn link here) | [GitHub](Insert your GitHub link here)
