@@ -99,7 +99,8 @@ with col2:
     # Categorical lookups
     if sex == 'male': applied_factors['Sex (Male)'] = rating_factors['sex_male']
     if smoker == 'yes': applied_factors['Smoker (Yes)'] = rating_factors['smoker_yes']
-    if region != 'southwest': # southwest is the dropped baseline category
+    # Dynamically check if the region has a multiplier (ignores the dropped baseline)
+    if f'region_{region}' in rating_factors:
         applied_factors[f'Region ({region.capitalize()})'] = rating_factors[f'region_{region}']
         
     factor_df = pd.DataFrame([
